@@ -23,7 +23,7 @@ else:
 # kernel now ready for use
 
 @client.event
-async def on_message(message, context):
+async def on_message(message,context):
     if message.author == client.user:
         return
     if messafe.content.upper().startswith(client.user.mention):
