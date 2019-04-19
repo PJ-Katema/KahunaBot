@@ -7,7 +7,7 @@ from discord import Game
 from discord.ext.commands import Bot
 
 # Read the credentials file
-with open('../credentials/credentials.json') as json_file:
+with open('credentials/credentials.json') as json_file:
     credentials = json.load(json_file)
 
 
