@@ -5,12 +5,14 @@ import aiml
 import json
 import requests
 import os
+import discord
 from discord import Game
 from discord.ext.commands import Bot
 
 BOT_PREFIX = "!"# Commands will start with the symbol specified here.
 TOKEN = "NTY4NzY1MzUwNTU3MjUzNjMz.XLm4rw.6zdEjt4DySNjqTY5iTDIz7C9_hs" # Get at discordapp.com/developers/applications/me
 client = Bot(command_prefix=BOT_PREFIX)
+Client = discord.Client()
 #-------------------------------------------------------------------------------
 kernel = aiml.Kernel()
 
@@ -23,12 +25,12 @@ else:
 # kernel now ready for use
 
 @client.event
-async def on_message(message,context):
+async def on_message(message):
+    # we do not want the bot to reply to itself
     if message.author == client.user:
         return
-    if messafe.content.upper().startswith(client.user.mention):
-        bot_response = kernel.respond(message)
-        await client.say(context.message.author.mention + ", " + bot_response)
+    bot_response = kernel.respond(message.content)
+    await client.send_message(message.channel, bot_response)
 #-------------------------------------------------------------------------------
 
 @client.command(name='totube',
