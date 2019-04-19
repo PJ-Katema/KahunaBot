@@ -9,7 +9,7 @@ with open(filename) as json_file:
     credentials = json.load(json_file)
 
 #get useful things from environ variables
-credentials["Token"] = str(os.environ['BotToken'])
+credentials["Token"] = os.environ['BotToken']
 credentials["ID"] = os.environ['ClientId']
 
 #remove original file and export new credentials with correct token!
