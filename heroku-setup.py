@@ -14,7 +14,7 @@ credentials["ID"] = os.environ['ClientId']
 
 #remove original file and export new credentials with correct token!
 with open(filename, 'w') as outfile:
-    json.dump(credentials, outfile)
+    json.dumps(credentials, outfile)
 
 #run bot - re do this later!!!
 os.system("python3 main/KahunaBot.py")
