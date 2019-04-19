@@ -6,13 +6,9 @@ import requests
 from discord import Game
 from discord.ext.commands import Bot
 
-# Read the credentials file
-with open('credentials/credentials.json') as json_file:
-    credentials = json.load(json_file)
-
 
 BOT_PREFIX = credentials["BotPrefix"] # Commands will start with the symbol specified here.
-TOKEN = credentials["Token"] # Get at discordapp.com/developers/applications/me
+TOKEN = str(os.environ['BotToken']) # Get at discordapp.com/developers/applications/me
 client = Bot(command_prefix=BOT_PREFIX)
 
 @client.command(name='totube',

@@ -1,1 +1,1 @@
-worker: python3 heroku-setup.py
+worker: python3 KahunaBot.py
