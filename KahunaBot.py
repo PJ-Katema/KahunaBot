@@ -7,9 +7,8 @@ import os
 from discord import Game
 from discord.ext.commands import Bot
 
-
-BOT_PREFIX = credentials["BotPrefix"] # Commands will start with the symbol specified here.
-TOKEN = str(os.environ['BotToken']) # Get at discordapp.com/developers/applications/me
+BOT_PREFIX = "!"# Commands will start with the symbol specified here.
+TOKEN = "NTY4NzY1MzUwNTU3MjUzNjMz.XLm4rw.6zdEjt4DySNjqTY5iTDIz7C9_hs" # Get at discordapp.com/developers/applications/me
 client = Bot(command_prefix=BOT_PREFIX)
 
 @client.command(name='totube',
