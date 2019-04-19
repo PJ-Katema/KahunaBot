@@ -1,7 +1,7 @@
 import json
 import os
 from boto.s3.connection import S3Connection
-import ../main/KahunaBot
+import main.KahunaBot
 
 # Read the credentials file
 filename = 'credentials/changeme.txt'
@@ -16,4 +16,5 @@ os.remove(filename)
 with open(filename, 'w') as outfile:
     json.dump(credentials, outfile)
 
-KahunaBot()
+#run bot - re do this later!!!
+os.system("python3 main/KahunaBot.py")

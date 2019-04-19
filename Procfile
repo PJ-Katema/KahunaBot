@@ -1,1 +1,1 @@
-worker: python3 setup/heroku-setup.py
+worker: python3 heroku-setup.py
