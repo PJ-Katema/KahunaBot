@@ -1,6 +1,7 @@
 # Works with Python 3.6
 import asyncio
 import aiohttp
+import aiml
 import json
 import requests
 import os
@@ -10,6 +11,25 @@ from discord.ext.commands import Bot
 BOT_PREFIX = "!"# Commands will start with the symbol specified here.
 TOKEN = "NTY4NzY1MzUwNTU3MjUzNjMz.XLm4rw.6zdEjt4DySNjqTY5iTDIz7C9_hs" # Get at discordapp.com/developers/applications/me
 client = Bot(command_prefix=BOT_PREFIX)
+#-------------------------------------------------------------------------------
+kernel = aiml.Kernel()
+
+if os.path.isfile("bot_brain.brn"):
+    kernel.bootstrap(brainFile = "bot_brain.brn")
+else:
+    kernel.bootstrap(learnFiles = "std-startup.xml", commands = "load aiml b")
+    kernel.saveBrain("bot_brain.brn")
+
+# kernel now ready for use
+
+@client.event
+async def on_message(message, context):
+    if message.author == client.user:
+        return
+    if messafe.content.upper().startswith(client.user.mention):
+        bot_response = kernel.respond(message)
+        await client.say(context.message.author.mention + ", " + bot_response)
+#-------------------------------------------------------------------------------
 
 @client.command(name='totube',
                 description ="Creates a link to a Together Tube room",
@@ -21,7 +41,8 @@ async def together_tube(context):
     url = requests.get("https://togethertube.com/room/create").url
     await client.say(context.message.author.mention +', your together tube link!\n\n'+ url +'\n\n Happy viewing!')
 
-
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 @client.event
 async def on_ready():
     await client.change_presence(game=Game(name="with humans"))
