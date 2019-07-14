@@ -10,7 +10,7 @@ from discord import Game
 from discord.ext.commands import Bot
 
 BOT_PREFIX = "!"# Commands will start with the symbol specified here.
-TOKEN = "NTY4NzY1MzUwNTU3MjUzNjMz.XLm4rw.6zdEjt4DySNjqTY5iTDIz7C9_hs" # Get at discordapp.com/developers/applications/me
+TOKEN = "" # Get at discordapp.com/developers/applications/me
 client = Bot(command_prefix=BOT_PREFIX)
 Client = discord.Client()
 #-------------------------------------------------------------------------------
